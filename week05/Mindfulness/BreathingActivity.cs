@@ -1,0 +1,30 @@
+using System;
+
+namespace MindfulnessProgram
+{
+    class BreathingActivity : Activity
+    {
+        public BreathingActivity()
+            : base("Breathing Activity", 
+                   "This activity will help you relax by guiding you to breathe slowly and deeply.")
+        {
+        }
+
+        public override void Run()
+        {
+            DisplayStartingMessage();
+            DateTime end = DateTime.Now.AddSeconds(_duration);
+            bool breatheIn = true;
+
+            while (DateTime.Now < end)
+            {
+                Console.WriteLine();
+                Console.Write(breatheIn ? "Breathe in... " : "Breathe out... ");
+                ShowCountDown(breatheIn ? 4 : 6);
+                breatheIn = !breatheIn;
+            }
+
+            DisplayEndingMessage();
+        }
+    }
+}
